@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluation Results</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #fdfdfd;
+            color: #FFFFFF;
+            position: relative;
+        }
+
+        header {
+            background-color: #0A1D3C; /* Dark Navy Blue */
+            color: #FFFFFF;
+            padding: 50px 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 3rem; /* Increased font size for header */
+        }
+
+        /* Line below the header */
+        header::after {
+            content: '';
+            width: 80%;
+            height: 2px;
+            background-color: #FFFFFF; /* White line to separate header */
+            position: absolute;
+            bottom: 0;
+        }
+
+        footer {
+            background-color: #0A1D3C; /* Dark Navy Blue */
+            color: #FFFFFF;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            max-width: 900px;
+            margin: 20px 0 20px 20px; /* Add a 20px gap on the left */
+            padding: 20px;
+            background: #0A1D3C;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .results-table {
+            width: 90%; /* Adjust width to fit content */
+            border-collapse: collapse;
+            margin-right: 20px;
+        }
+
+        .results-table th, .results-table td {
+            padding: 20px 15px;  /* Increased padding */
+            text-align: left;
+            border: 1px solid #ddd;
+            color: #FFFFFF;
+            line-height: 1.6;  /* Increased line-height for more spacing */
+        }
+
+        .results-table th {
+            background-color: #0A1D3C;
+            font-size: 1.2rem;
+        }
+
+        .results-table td {
+            background-color: #2A3A56;
+            font-size: 1rem;
+        }
+
+        .results-table tr:hover {
+            background-color: #3a4a66;
+        }
+
+        .results-table td .similarity-score {
+            font-weight: bold;
+            color: #FFE680;
+        }
+
+        /* Image placed at the extreme right of the page */
+        img.right-image {
+            position: absolute;
+            top: 50%;
+            right: 0;
+            transform: translateY(-50%);
+            max-width: 50%; /* Adjust image size */
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* Confetti animation styles */
+        /* Confetti animation styles */
+@keyframes confetti-animation {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(500px) rotate(360deg); opacity: 0; }
+}
+
+.confetti {
+    position: fixed;
+    width: 5px;
+    height: 5px;
+    animation: confetti-animation 5s ease-in-out infinite;
+    pointer-events: none;
+    top: -10px;
+}
+
+/* Confetti at the left side */
+.confetti:nth-child(1) { left: 5%; animation-duration: 4s; background-color: #FF5733; }
+.confetti:nth-child(2) { left: 10%; animation-duration: 6s; background-color: #FF33A1; }
+.confetti:nth-child(3) { left: 15%; animation-duration: 5s; background-color: #FF9A33; }
+.confetti:nth-child(4) { left: 20%; animation-duration: 7s; background-color: #FF5733; }
+.confetti:nth-child(5) { left: 25%; animation-duration: 6s; background-color: #FFD733; }
+
+/* Confetti in the middle */
+.confetti:nth-child(6) { left: 40%; animation-duration: 5s; background-color: #33FF57; }
+.confetti:nth-child(7) { left: 45%; animation-duration: 6s; background-color: #33C1FF; }
+.confetti:nth-child(8) { left: 50%; animation-duration: 7s; background-color: #33FFBB; }
+.confetti:nth-child(9) { left: 55%; animation-duration: 6s; background-color: #FF3355; }
+.confetti:nth-child(10) { left: 60%; animation-duration: 5s; background-color: #5733FF; }
+
+/* Confetti at the right side */
+.confetti:nth-child(11) { left: 75%; animation-duration: 6s; background-color: #FF5733; }
+.confetti:nth-child(12) { left: 80%; animation-duration: 7s; background-color: #9A33FF; }
+.confetti:nth-child(13) { left: 85%; animation-duration: 5s; background-color: #FFD733; }
+.confetti:nth-child(14) { left: 90%; animation-duration: 6s; background-color: #33FFBB; }
+.confetti:nth-child(15) { left: 95%; animation-duration: 8s; background-color: #FF33A1; }
+
+/* Confetti at the left side */
+.confetti:nth-child(1) { left: 5%; animation-duration: 4s; background-color: #FF5733; }
+.confetti:nth-child(2) { left: 10%; animation-duration: 6s; background-color: #FF33A1; }
+.confetti:nth-child(3) { left: 15%; animation-duration: 5s; background-color: #FF9A33; }
+.confetti:nth-child(4) { left: 20%; animation-duration: 7s; background-color: #FF5733; }
+.confetti:nth-child(5) { left: 25%; animation-duration: 6s; background-color: #FFD733; }
+
+/* Confetti in the middle */
+.confetti:nth-child(6) { left: 40%; animation-duration: 5s; background-color: #33FF57; }
+.confetti:nth-child(7) { left: 45%; animation-duration: 6s; background-color: #33C1FF; }
+.confetti:nth-child(8) { left: 50%; animation-duration: 7s; background-color: #33FFBB; }
+.confetti:nth-child(9) { left: 55%; animation-duration: 6s; background-color: #FF3355; }
+.confetti:nth-child(10) { left: 60%; animation-duration: 5s; background-color: #5733FF; }
+
+/* Confetti at the right side */
+.confetti:nth-child(11) { left: 75%; animation-duration: 6s; background-color: #FF5733; }
+.confetti:nth-child(12) { left: 80%; animation-duration: 7s; background-color: #9A33FF; }
+.confetti:nth-child(13) { left: 85%; animation-duration: 5s; background-color: #FFD733; }
+.confetti:nth-child(14) { left: 90%; animation-duration: 6s; background-color: #33FFBB; }
+.confetti:nth-child(15) { left: 95%; animation-duration: 8s; background-color: #FF33A1; }
+
+        
+        /* Add more as needed */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Evaluation Results</h1>
+    </header>
+
+    <!-- Confetti elements (you can add more .confetti divs for more particles) -->
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+    <div class="confetti"></div>
+
+    <!-- Add more as needed -->
+
+    <div class="container">
+        <!-- Results Table -->
+        <table class="results-table">
+            <thead>
+                <tr>
+                    <th>Question</th>
+                    <th>Your Answer</th>
+                    <th>Result</th>
+                    <th>Similarity Score</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Replace with dynamic content -->
+                <tr>
+                    <td>{{question_1}}</td>
+                    <td>{{answer_1}}</td>
+                    <td>{{result_1}}</td>
+                    <td><span class="similarity-score">{{similarity_score_1}}</span></td>
+                </tr>
+                <tr>
+                    <td>{{question_2}}</td>
+                    <td>{{answer_2}}</td>
+                    <td>{{result_2}}</td>
+                    <td><span class="similarity-score">{{similarity_score_2}}</span></td>
+                </tr>
+                <tr>
+                    <td>{{question_3}}</td>
+                    <td>{{answer_3}}</td>
+                    <td>{{result_3}}</td>
+                    <td><span class="similarity-score">{{similarity_score_3}}</span></td>
+                </tr>
+                <tr>
+                    <td>{{question_4}}</td>
+                    <td>{{answer_4}}</td>
+                    <td>{{result_4}}</td>
+                    <td><span class="similarity-score">{{similarity_score_4}}</span></td>
+                </tr>
+                <tr>
+                    <td>{{question_5}}</td>
+                    <td>{{answer_5}}</td>
+                    <td>{{result_5}}</td>
+                    <td><span class="similarity-score">{{similarity_score_5}}</span></td>
+                </tr>
+                <tr>
+                    <td>{{question_6}}</td>
+                    <td>{{answer_6}}</td>
+                    <td>{{result_6}}</td>
+                    <td><span class="similarity-score">{{similarity_score_6}}</span></td>
+                </tr>
+                <tr>
+                    <td>{{question_7}}</td>
+                    <td>{{answer_7}}</td>
+                    <td>{{result_7}}</td>
+                    <td><span class="similarity-score">{{similarity_score_7}}</span></td>
+                </tr>
+                <!-- Additional rows can be added here -->
+            </tbody>
+        </table>
+        
+        <!-- Image placed at the extreme right -->
+        <img class="right-image" src="hello.jpg" alt="Evaluation Result Image">
+    </div>
+
+    <footer>
+        <p>&copy; 2024 HireSmart. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

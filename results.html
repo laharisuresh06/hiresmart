@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HireSmart - Results</title>
+    <link rel="stylesheet" href="styles/results.css">
+    <style>
+        /* Base Styling */
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #120946, #38b9cf);
+            color: #fff;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        header {
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        /* Result Section */
+        .result-container {
+            margin: 40px auto;
+            padding: 20px;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .result-container h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #FFEB3B;
+        }
+
+        .result-container p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        /* Buttons */
+        .action-buttons {
+            margin-top: 30px;
+        }
+
+        .action-buttons a {
+            text-decoration: none;
+            color: #fff;
+            background: #FF5722;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            margin: 0 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .action-buttons a:hover {
+            background: #FF7043;
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HireSmart Results</h1>
+    </header>
+
+    <div class="result-container">
+        <h2>Wohooo !! Congratulations 🎉</h2>
+        <p>We have found the best jobs tailored just for you!</p>
+        <p>Your dream career is just a step away. Check out the recommendations below and start your journey today!</p>
+
+        <div class="action-buttons">
+            <a href="job-details.html">View Details</a>
+            <a href="home.html">Proceed to Interview</a>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 HireSmart. All rights reserved.</p>
+    </footer>
+</body>
+</html>
